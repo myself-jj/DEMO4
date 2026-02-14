@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Website by JJ 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #ffe6f8; /* soft pastel pink */
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-bottom: 60px;
+      color: #ff66aa;
+      font-size: 3rem;
+      text-shadow: 2px 2px #fff;
+      text-align: center;
+    }
+
+    .line-container {
+      position: relative;
+      width: 80%;
+      height: 25px;
+      background: #ffd6f0;
+      border-radius: 50px;
+      overflow: hidden;
+    }
+
+    .line {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #ff9de2, #ffec99, #9df7ff, #ff9de2);
+      background-size: 300% 100%;
+      border-radius: 50px;
+      animation: lineMove 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes lineMove {
+      0% { transform: translateY(0) scaleX(1); background-position: 0% 0%; }
+      25% { transform: translateY(-10px) scaleX(1.1); background-position: 50% 0%; }
+      50% { transform: translateY(0) scaleX(1); background-position: 100% 0%; }
+      75% { transform: translateY(10px) scaleX(0.9); background-position: 50% 0%; }
+      100% { transform: translateY(0) scaleX(1); background-position: 0% 0%; }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #ff4c99;
+      animation: floatHeart 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateY(-30px) scale(1.3); opacity: 0.7; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkle 2s linear infinite;
+    }
+
+    @keyframes sparkle {
+      0% { transform: translate(0,0) scale(1); opacity: 1; }
+      50% { transform: translate(200px, -50px) scale(1.5); opacity: 0.5; }
+      100% { transform: translate(0,0) scale(1); opacity: 1; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Demo Website by JJ 💖</h1>
+
+  <div class="line-container">
+    <div class="line"></div>
+    <div class="sparkle" style="top: -10px; left: 10%;"></div>
+    <div class="sparkle" style="top: 0px; left: 50%;"></div>
+    <div class="sparkle" style="top: -5px; left: 80%;"></div>
+    
+    <!-- Floating hearts -->
+    <div class="heart" style="top: -10px; left: 15%;">❤️</div>
+    <div class="heart" style="top: 0px; left: 35%;">💖</div>
+    <div class="heart" style="top: -5px; left: 60%;">💕</div>
+    <div class="heart" style="top: 5px; left: 80%;">💘</div>
+  </div>
+
+  <script>
+    const container = document.querySelector('.line-container');
+
+    // Click effect: cute pop
+    container.addEventListener('click', () => {
+      alert('You touched the cute hearts! 🌸💖');
+    });
+
+    // Animate hearts slightly randomly
+    const hearts = document.querySelectorAll('.heart');
+    hearts.forEach((heart) => {
+      setInterval(() => {
+        const offsetX = Math.random() * 20 - 10; // move left/right a bit
+        const offsetY = Math.random() * 10 - 5;  // move up/down a bit
+        heart.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
